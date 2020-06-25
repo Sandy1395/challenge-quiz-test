@@ -58,7 +58,8 @@ const QuestionQuiz = () => {
   const getMaxScore = () => {
     const answer = _countBy(results, r => r.result)
     const remainingQuestion = question.length - results.length
-    return Math.round((((answer.true || 0) + remainingQuestion) / question.length) * 100)
+    return Math.round((((answer.true || 0) +
+      remainingQuestion) / question.length) * 100)
   }
 
   const getLowestPossibleScore = () => {
@@ -77,9 +78,14 @@ const QuestionQuiz = () => {
         <>
           <div>{currentResult.text}</div>
           <NextQuestionButton
-            onClick={results.length + 1 === question.length ? onFinished : onNextQuestion}
+            onClick={results.length + 1 === question.length
+              ? onFinished : onNextQuestion
+            }
           >
-            {results.length + 1 === question.length ? 'Finish' : 'Next Question.'}
+            {
+              results.length + 1 === question.length
+                ? 'Finish' : 'Next Question.'
+            }
           </NextQuestionButton>
         </>
       )
@@ -135,7 +141,7 @@ const QuestionQuiz = () => {
           <div> Max Score: {maxScore}%</div>
         </FooterStatstics>
         <ProgressBar>
-          <ProgressBarCommon width={maxScore || 0} color={'#dedede'} /> { /* max score */}
+          <ProgressBarCommon width={maxScore || 0} color={'#dedede'} />
           <ProgressBarCommon width={currentScore || 0} color={'grey'} />
           <ProgressBarCommon width={lowestPossibleScore || 0} color={'black'} />
         </ProgressBar>
