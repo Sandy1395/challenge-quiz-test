@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  height: 100vh;
-  width: 50%;
+  height: 90vh;
+  width: 33%;
   padding: 1rem;
   margin: 0 auto;
   position: relative;
@@ -34,6 +34,7 @@ export const AnswertButton = styled.button`
   padding: 7px;
   min-width: 11rem;
   max-width: 11rem;
+  ${(props) => props.correct ? 'border: 2px solid green;' : null}
   &:focus {
     background-color: black;
     color: #fff
@@ -71,7 +72,7 @@ export const ProgressBarFill = styled.div`
 
 export const FooterContainer = styled.div`
   position: absolute;
-  bottom: 10;
+  bottom: 20px;
   margin-top: 2rem;
   width: 100%;
 `
@@ -88,7 +89,7 @@ export const ProgressBarCommon = styled.div`
 export const FooterStatstics = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 10px 10px;
+  margin: 10px 0;
 `
 
 export const ResultContainer = styled.div`

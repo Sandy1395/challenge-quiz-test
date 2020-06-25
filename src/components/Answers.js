@@ -3,7 +3,6 @@ import { AnswerContainer, AnswertButton, format } from './common'
 
 const Answers = React.memo(({ correct, incorrect, onAnswerSelect, disabled, currentAnswer }) => {
   const [answerArr, setAnswerArr] = useState([])
-
   const groupAnswers = useCallback(() => {
     if (correct && incorrect) {
       const answerArr = [...incorrect]
@@ -17,7 +16,7 @@ const Answers = React.memo(({ correct, incorrect, onAnswerSelect, disabled, curr
 
   const checkAnswer = (answer) => {
     if (answer === format(correct)) {
-      onAnswerSelect({ result: true, text: 'Correct', answer })
+      onAnswerSelect({ result: true, text: 'Correct!', answer })
     } else {
       onAnswerSelect({ result: false, text: 'Sorry!', answer })
     }
@@ -34,6 +33,7 @@ const Answers = React.memo(({ correct, incorrect, onAnswerSelect, disabled, curr
           <AnswertButton
             key={answer}
             disabled={disabled && currentAnswer !== format(answer)}
+            correct={currentAnswer && format(correct) === format(answer)}
             onClick={() => checkAnswer(format(answer))}
           >{format(answer)}
           </AnswertButton>
@@ -43,6 +43,7 @@ const Answers = React.memo(({ correct, incorrect, onAnswerSelect, disabled, curr
         {answerArr.slice(2, 4).map((answer) =>
           <AnswertButton
             key={answer}
+            correct={currentAnswer && format(correct) === format(answer)}
             disabled={disabled && currentAnswer !== format(answer)}
             onClick={() => checkAnswer(format(answer))}
           >{format(answer)}
