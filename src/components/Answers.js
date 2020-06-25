@@ -7,7 +7,7 @@ const Answers = React.memo(({ correct, incorrect, onAnswerSelect, disabled, curr
   const groupAnswers = useCallback(() => {
     if (correct && incorrect) {
       const answerArr = [...incorrect]
-      const correctAnsPos = Math.floor(Math.random() * 3)
+      const correctAnsPos = Math.floor(Math.random() * 4)
       answerArr.splice(correctAnsPos, 0, correct)
       return answerArr
     } else {
